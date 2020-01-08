@@ -1,0 +1,43 @@
+﻿@model MVC_SQL.Models.TestFinanceModel
+
+@{
+    ViewData["Title"] = "Portfolio";
+}
+
+<h1>Portfolio</h1>
+
+<table>
+    <tr>
+        <td>
+            FinanceVehicle
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.FinanceVehicle)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            MarketTicker
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.MarketTicker)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            CurrentValue
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CurrentValue)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            PreviousMonthValue
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PreviousMonthValue)
+        </td>
+    </tr>
+</table>
