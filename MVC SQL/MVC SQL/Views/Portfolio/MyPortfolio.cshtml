@@ -1,0 +1,48 @@
+﻿@model MVC_SQL.Models.GenericList<TestFinanceModel>
+
+@{
+    ViewData["Title"] = "MyPortfolio";
+}
+
+<h1>MyPortfolio</h1>
+
+<div>
+    @foreach (var curVehicle in Model.objectList)
+    {
+        <table>
+            <tr>
+                <td>
+                    FinanceVehicle
+                </td>
+
+                <td>
+                    @Html.Display(curVehicle.FinanceVehicle)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MarketTicker
+                </td>
+                <td>
+                    @Html.Display(curVehicle.MarketTicker)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    CurrentValue
+                </td>
+                <td>
+                    @Html.Display(curVehicle.CurrentValue.ToString())
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PreviousMonthValue
+                </td>
+                <td>
+                    @Html.Display(curVehicle.PreviousMonthValue.ToString())
+                </td>
+            </tr>
+        </table>
+    }
+</div>

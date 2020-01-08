@@ -29,19 +29,6 @@ namespace MVC_SQL.Controllers
             return View();
         }
 
-        public IActionResult Portfolio()
-        {
-            string query = "";
-            SqlCommand command;
-            var testModel = new TestFinanceModel
-            {
-                FinanceVehicle = "STOCK",
-                MarketTicker = "TSLA",
-                CurrentValue = 443,
-                PreviousMonthValue = 343
-            };
-            return View(testModel);
-        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
