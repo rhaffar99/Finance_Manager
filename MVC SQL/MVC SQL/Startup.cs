@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVC_SQL.Logic;
 
 namespace MVC_SQL
 {
@@ -16,6 +17,10 @@ namespace MVC_SQL
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            TestFinanceModelDbContext con = new TestFinanceModelDbContext();
+            con.Database.Initialize(true);
+            con.Database.CreateIfNotExists();
+            DataSeeder.seedInitial(con);
         }
 
         public IConfiguration Configuration { get; }

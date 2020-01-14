@@ -1,6 +1,5 @@
 ﻿namespace MVC_SQL.Migrations
 {
-    using MVC_SQL.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -19,12 +18,6 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-
-            context.set.AddOrUpdate(
-                t => t.Id,
-                new TestFinanceModel { Id = 3 }
-            );
-            context.SaveChanges();
         }
     }
 }

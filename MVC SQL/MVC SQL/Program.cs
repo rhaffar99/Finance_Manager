@@ -15,7 +15,14 @@ namespace MVC_SQL
     {
         public static void Main(string[] args)
         {
+            using (var ctx = new TestFinanceModelDbContext())
+            {
+                var newItem = new TestFinanceModel() { Id = 7 };
+                ctx.set.Add(newItem);
+                ctx.SaveChanges();
+            }
             CreateHostBuilder(args).Build().Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
