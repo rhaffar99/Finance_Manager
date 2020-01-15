@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "GrowPortfolio";
+}
+
+    <form method="post">
+        <fieldset>
+            <Legend>
+                <div>
+                    <label for="CompanyTickerTag">Company Ticker Tag</label>
+                    <input type="text" name="CompanyTickerTag" value="" />
+                    @{ 
+                       MVC_SQL.Logic.ApiInterface.generateSearchUrl(CompanyTickerTag);
+                    }
+                </div>
+            </Legend>
+        <fieldset>
+    </form>
