@@ -8,10 +8,18 @@
                 <div>
                     <label for="CompanyTickerTag">Company Ticker Tag</label>
                     <input type="text" name="CompanyTickerTag" value="" />
-                    @{ 
-                       MVC_SQL.Logic.ApiInterface.generateSearchUrl(CompanyTickerTag);
+                    @{    
+                        if (IsPost)
+                        {
+                            string companyTickerTag = Request.Form["companyname"];
+                            MVC_SQL.Logic.ApiInterface.generateSearchUrl(companyTickerTag);
+                        }
                     }
                 </div>
+                <div>
+                    <label>&nbsp;</label>
+                    <input type="submit" value="Submit" class="submit" />
+                </div>
             </Legend>
-        <fieldset>
+        </fieldset>
     </form>
