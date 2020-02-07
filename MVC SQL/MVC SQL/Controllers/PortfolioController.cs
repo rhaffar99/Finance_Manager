@@ -22,8 +22,10 @@ namespace MVC_SQL.Controllers
             //GenericList<TestFinanceModel> portfolioList = 
             return View();
         }
+
         public IActionResult GrowPortfolio()
         {
+            //PASS BINDING MODEL
             return View();
         }
         public IActionResult FinanceAnalytics()
