@@ -14,13 +14,12 @@ namespace MVC_SQL.Controllers
         // GET: /<controller>/
         public IActionResult MyPortfolio()
         {
-            //List<customClass> ListOfCustomClass = new List<customClass>();
-            //Do as needed...
-            //return View(new ListModel<customClass>(ListOfCustomClass));
-
-            //Procure from DB
-            //GenericList<TestFinanceModel> portfolioList = 
-            return View();
+            using (TestFinanceModelDbContext con = new TestFinanceModelDbContext())
+            {
+                var financeModelList = from model in con.set
+                                       select model;
+                return View(financeModelList);
+            }
         }
 
         public IActionResult GrowPortfolio()
