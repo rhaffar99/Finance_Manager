@@ -11,7 +11,6 @@ namespace MVC_SQL.Controllers
 {
     public class PortfolioController : Controller
     {
-        // GET: /<controller>/
         public IActionResult MyPortfolio()
         {
             using (TestFinanceModelDbContext con = new TestFinanceModelDbContext())
@@ -21,11 +20,15 @@ namespace MVC_SQL.Controllers
                 return View(financeModelList);
             }
         }
-
         public IActionResult GrowPortfolio()
         {
-            //PASS BINDING MODEL
+            Console.WriteLine("TEST");
             return View();
+        }
+        public IActionResult ViewAdded(GrowPortfolioModelBinder GPModelBinder)
+        {
+            Console.WriteLine("TEST");
+            return View(GPModelBinder);
         }
         public IActionResult FinanceAnalytics()
         {

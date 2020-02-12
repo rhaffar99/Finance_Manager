@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 namespace MVC_SQL.Models
 {
     [BindProperties]
-    public class GrowPortfolioModelBinder: PageModel
+    public class GrowPortfolioModelBinder
     {
         public string CompanyTickerTag { get; set; }
-        public void OnPost()
-        {
-            ViewData["test"] = $"{CompanyTickerTag}";
-        }
     }
 }

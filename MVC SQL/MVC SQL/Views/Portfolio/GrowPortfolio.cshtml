@@ -1,19 +1,14 @@
-﻿@page "{test}"
-@model MVC_SQL.Models.GrowPortfolioModelBinder
+﻿@model MVC_SQL.Models.GrowPortfolioModelBinder
 
-@{
-    ViewData["Title"] = "GrowPortfolio";
+@Html.Label(Model.CompanyTickerTag)
+
+@using (Html.BeginForm("GrowPortfolio", "Portfolio"))
+{
+    <Legend>
+        <div>
+            <label for="CompanyTickerTag">CompanyTickerTag</label>
+            <input type="text" class="form-control" name="CompanyTickerTag">
+            <button type="submit">Submit</button>
+        </div>
+    </Legend>
 }
-
-<form method="post">
-    <fieldset>
-        <Legend>
-            <div>
-                <h3>Test: @ViewData["test"]</h3>
-                <label for="CompanyTickerTag">CompanyTickerTag</label>
-                <input type="text" class="form-control" name="CompanyTickerTag">
-                <button type="submit">Submit</button>
-            </div>
-        </Legend>
-    <fieldset>
-</form>
