@@ -12,15 +12,6 @@
         <table>
             <tr>
                 <td>
-                    FinanceVehicle
-                </td>
-
-                <td>
-                    @Html.Display(curVehicle.FinanceVehicle)
-                </td>
-            </tr>
-            <tr>
-                <td>
                     MarketTicker
                 </td>
                 <td>
@@ -40,7 +31,7 @@
                     PreviousMonthValue
                 </td>
                 <td>
-                    @Html.Display(curVehicle.PreviousMonthValue.ToString())
+                    @Html.Display(curVehicle.PercentageChange.ToString())
                 </td>
             </tr>
         </table>
