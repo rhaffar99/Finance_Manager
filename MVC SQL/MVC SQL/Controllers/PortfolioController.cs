@@ -25,20 +25,16 @@ namespace MVC_SQL.Controllers
         public IActionResult GetVehicle()
         {
             var getVehicle = new GetVehicleModelBinder();
-            Console.WriteLine("TEST");
             return View(getVehicle);
         }
 
         //Redirects to form that populates Model Binder
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
-            var jsonVehicleData = new QuoteEndpointModel();
-            string json = "0";
-            while (json == "0") {
-                json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
-            }
-            jsonVehicleData = ApiInterface.jsonToAPIModel(json);
-            return View();
+            var deserializedVehicleData = new QuoteEndpointModel();
+            var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
+            deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
+            return RedirectToAction("MyPortfolio");
         }
         public IActionResult FinanceAnalytics()
        {

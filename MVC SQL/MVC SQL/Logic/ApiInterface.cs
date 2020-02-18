@@ -27,6 +27,10 @@ namespace MVC_SQL.Logic
         {
             string baseUrl = generateSearchUrl(symbol);
             var responseString = await client.GetStringAsync(baseUrl);
+            while (responseString == "0")
+            {
+                responseString = await client.GetStringAsync(baseUrl);
+            }
             return responseString;
         }
 

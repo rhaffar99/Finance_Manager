@@ -8,10 +8,21 @@ namespace MVC_SQL.Logic
 {
     public static class EntityDataHandler
     {
-        public static void storeData(List<TestFinanceModel> vehicleList, TestFinanceModelDbContext context)
+        public static void storeData(TestFinanceModel vehicle)
         {
-            context.set.AddRange(vehicleList);
-            context.SaveChanges();
+            using (TestFinanceModelDbContext context = new TestFinanceModelDbContext())
+            {
+                context.set.Add(vehicle);
+                context.SaveChanges();
+            }
+        }
+        public static void storeData(List<TestFinanceModel> vehicleList)
+        {
+            using (TestFinanceModelDbContext context = new TestFinanceModelDbContext())
+            {
+                context.set.AddRange(vehicleList);
+                context.SaveChanges();
+            }
         }
 
         public static List<TestFinanceModel> pullData(IEnumerable<TestFinanceModel> query)

@@ -9,11 +9,5 @@ namespace MVC_SQL.Models
         public int CurrentValue { get; set; }
         public int PercentageChange { get; set; }
 
-        public TestFinanceModel() {}
-
-        /*private string calculatePriceChange()
-        {
-            return ((CurrentValue - PreviousMonthValue) * 100).ToString() + "%";
-        }*/
     }
 }
