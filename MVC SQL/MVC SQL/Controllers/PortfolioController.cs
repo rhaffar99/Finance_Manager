@@ -37,7 +37,7 @@ namespace MVC_SQL.Controllers
             while (json == "0") {
                 json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
             }
-            jsonVehicleData = ApiInterface.jsonToAPIModel(json, jsonVehicleData);
+            jsonVehicleData = ApiInterface.jsonToAPIModel(json);
             return View();
         }
         public IActionResult FinanceAnalytics()

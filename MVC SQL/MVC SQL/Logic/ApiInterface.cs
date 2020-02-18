@@ -30,10 +30,10 @@ namespace MVC_SQL.Logic
             return responseString;
         }
 
-        static public QuoteEndpointModel jsonToAPIModel (string json, QuoteEndpointModel emptyModel)
+        static public QuoteEndpointModel jsonToAPIModel (string json)
         {
-            emptyModel = JsonConvert.DeserializeObject<QuoteEndpointModel>(json);
-            return emptyModel;
+            GlobalQuoteModel jsonModel = JsonConvert.DeserializeObject<GlobalQuoteModel>(json);
+            return jsonModel.quote;
         }
     }
 }
