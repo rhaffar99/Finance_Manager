@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MVC_SQL.Models
 {
     [BindProperties]
-    public class GrowPortfolioModelBinder
+    public class GetVehicleModelBinder
     {
         public string CompanyTickerTag { get; set; }
     }

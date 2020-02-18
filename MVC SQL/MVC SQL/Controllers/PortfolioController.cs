@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MVC_SQL.Logic;
 using MVC_SQL.Models;
+using MVC_SQL.Models.API_Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,18 +22,26 @@ namespace MVC_SQL.Controllers
                 return View(financeModelList);
             }
         }
-        public IActionResult GrowPortfolio()
+        public IActionResult GetVehicle()
         {
+            var getVehicle = new GetVehicleModelBinder();
             Console.WriteLine("TEST");
+            return View(getVehicle);
+        }
+
+        //Redirects to form that populates Model Binder
+        public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
+        {
+            var jsonVehicleData = new QuoteEndpointModel();
+            string json = "0";
+            while (json == "0") {
+                json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
+            }
+            jsonVehicleData = ApiInterface.jsonToAPIModel(json, jsonVehicleData);
             return View();
         }
-        public IActionResult ViewAdded(GrowPortfolioModelBinder GPModelBinder)
-        {
-            Console.WriteLine("TEST");
-            return View(GPModelBinder);
-        }
         public IActionResult FinanceAnalytics()
-        {
+       {
             return View();
         }
         public IActionResult Learning()

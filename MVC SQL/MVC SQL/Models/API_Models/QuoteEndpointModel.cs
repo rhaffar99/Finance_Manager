@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.API_Models
 {
-    public class SearchEndpoint
+    public class QuoteEndpointModel
     {
         string symbol { get; set; }
         double open { get; set; }
