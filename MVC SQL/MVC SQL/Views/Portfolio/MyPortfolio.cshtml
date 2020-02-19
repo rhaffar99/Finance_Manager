@@ -1,4 +1,4 @@
-﻿@model MVC_SQL.Models.GenericList<TestFinanceModel>
+﻿@model List<TestFinanceModel>
 
 @{
     ViewData["Title"] = "MyPortfolio";
@@ -7,7 +7,7 @@
 <h1>MyPortfolio</h1>
 
 <div>
-    @foreach (var curVehicle in Model.objectList)
+    @foreach (var curVehicle in Model)
     {
         <table>
             <tr>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    PreviousMonthValue
+                    PercentageChange
                 </td>
                 <td>
                     @Html.Display(curVehicle.PercentageChange.ToString())

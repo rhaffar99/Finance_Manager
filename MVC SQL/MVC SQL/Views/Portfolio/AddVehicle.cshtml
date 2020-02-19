@@ -1,0 +1,38 @@
+﻿@model MVC_SQL.Models.API_Models.QuoteEndpointModel
+
+@using (Html.BeginForm("MyPortfolio", "Portfolio"))
+{
+    <Legend>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        Market Ticker
+                    </td>
+                    <td>
+                        @Html.Label(Model.symbol)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Open Value
+                    </td>
+                    <td>
+                        @Html.Label(Model.open.ToString())
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        PercentageChange
+                    </td>
+                    <td>
+                        @Html.Label(Model.change_percent.ToString())
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button type="submit">Add</button>
+        </div>
+    </Legend>
+}

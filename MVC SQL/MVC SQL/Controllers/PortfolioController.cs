@@ -19,7 +19,7 @@ namespace MVC_SQL.Controllers
             {
                 var financeModelList = from model in con.set
                                        select model;
-                return View(financeModelList);
+                return View(financeModelList.ToList());
             }
         }
         public IActionResult GetVehicle()
@@ -34,7 +34,7 @@ namespace MVC_SQL.Controllers
             var deserializedVehicleData = new QuoteEndpointModel();
             var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
             deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
-            return RedirectToAction("MyPortfolio");
+            return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
        {
