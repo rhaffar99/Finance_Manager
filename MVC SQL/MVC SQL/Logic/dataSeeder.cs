@@ -14,11 +14,11 @@ namespace MVC_SQL.Logic
             {
                 var investments = new List<TestFinanceModel>
                 {
-                    new TestFinanceModel {Id = 1, MarketTicker = "TSLA", CurrentValue = 0, PercentageChange = 0},
-                    new TestFinanceModel {Id = 2, MarketTicker = "VAB", CurrentValue = 0, PercentageChange = 0},
-                    new TestFinanceModel {Id = 3, MarketTicker = "VIDY", CurrentValue = 0, PercentageChange = 0},
-                    new TestFinanceModel {Id = 4, MarketTicker = "VNQ", CurrentValue = 0, PercentageChange = 0},
-                    new TestFinanceModel {Id = 5, MarketTicker = "VGH", CurrentValue = 0, PercentageChange = 0},
+                    new TestFinanceModel ("TSLA", 0, "0"),
+                    new TestFinanceModel ("VAB", 0, "0"),
+                    new TestFinanceModel ("VIDY", 0, "0"),
+                    new TestFinanceModel ("VNQ", 0, "0"),
+                    new TestFinanceModel ("VGH", 0, "0")
                 };
 
                 context.set.AddRange(investments);

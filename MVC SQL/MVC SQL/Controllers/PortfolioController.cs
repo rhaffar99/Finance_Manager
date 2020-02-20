@@ -34,6 +34,7 @@ namespace MVC_SQL.Controllers
             var deserializedVehicleData = new QuoteEndpointModel();
             var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
             deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
+            //EntityDataHandler.storeData(deserializedVehicleData);
             return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
