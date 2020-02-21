@@ -12,7 +12,7 @@
                         Market Ticker
                     </td>
                     <td>
-                        @Html.Label(Model.symbol)
+                        @Model.symbol
                     </td>
                 </tr>
                 <tr>
@@ -20,7 +20,7 @@
                         Open Value
                     </td>
                     <td>
-                        @Html.Label(Model.open.ToString())
+                        @Model.open.ToString()
                     </td>
                 </tr>
                 <tr>
@@ -28,7 +28,7 @@
                         PercentageChange
                     </td>
                     <td>
-                        @Html.Label(Model.change_percent.ToString())
+                        @Model.change_percent.ToString()
                     </td>
                 </tr>
             </table>

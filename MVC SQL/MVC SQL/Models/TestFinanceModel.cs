@@ -5,6 +5,10 @@ namespace MVC_SQL.Models
 {
     public class TestFinanceModel
     {
+        private TestFinanceModel()
+        {
+
+        }
         public TestFinanceModel(QuoteEndpointModel quote)
         {
             this.MarketTicker = quote.symbol;

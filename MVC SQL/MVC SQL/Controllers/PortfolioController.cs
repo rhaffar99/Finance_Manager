@@ -17,9 +17,9 @@ namespace MVC_SQL.Controllers
         {
             using (TestFinanceModelDbContext con = new TestFinanceModelDbContext())
             {
-                var financeModelList = from model in con.set
-                                       select model;
-                return View(financeModelList.ToList());
+                //All elements
+                var financeModelList = con.set.Where(f => f.Id >= 0);
+                return View(financeModelList.Select(x => x).ToList());
             }
         }
         public IActionResult GetVehicle()
@@ -34,11 +34,12 @@ namespace MVC_SQL.Controllers
             var deserializedVehicleData = new QuoteEndpointModel();
             var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
             deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
-            //EntityDataHandler.storeData(deserializedVehicleData);
+            TestFinanceModel modelToStore = new TestFinanceModel(deserializedVehicleData);
+            EntityDataHandler.storeData(modelToStore);
             return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
-       {
+        {
             return View();
         }
         public IActionResult Learning()
