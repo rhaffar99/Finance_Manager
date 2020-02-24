@@ -33,9 +33,17 @@ namespace MVC_SQL.Controllers
         {
             var deserializedVehicleData = new QuoteEndpointModel();
             var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
-            deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
-            TestFinanceModel modelToStore = new TestFinanceModel(deserializedVehicleData);
-            EntityDataHandler.storeData(modelToStore);
+            TestFinanceModel modelToStore = null;
+            try
+            {
+                deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
+                modelToStore = new TestFinanceModel(deserializedVehicleData);
+            } catch (Exception ex)
+            {
+                ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
+                return View("Error", Error);
+            }
+                EntityDataHandler.storeData(modelToStore);
             return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
