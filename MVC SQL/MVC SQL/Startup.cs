@@ -20,7 +20,9 @@ namespace MVC_SQL
             TestFinanceModelDbContext con = new TestFinanceModelDbContext();
             con.Database.Initialize(true);
             con.Database.CreateIfNotExists();
-            DataSeeder.seedInitial(con);
+
+            //Data Seeder, arbitrary data created to test DB
+            //DataSeeder.seedInitial(con); 
         }
 
         public IConfiguration Configuration { get; }
