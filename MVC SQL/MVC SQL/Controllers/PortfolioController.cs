@@ -28,16 +28,22 @@ namespace MVC_SQL.Controllers
             return View(getVehicle);
         }
 
+        public IActionResult Test()
+        {
+            return null;
+        }
+
         //Redirects to form that populates Model Binder
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
             var deserializedVehicleData = new QuoteEndpointModel();
-            var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag).Result;
+            var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag, "GLOBAL_QUOTE").Result;
             TestFinanceModel modelToStore = null;
             try
             {
-                deserializedVehicleData = ApiInterface.jsonToAPIModel(json);
+                deserializedVehicleData = ApiInterface.jsonToAPIModelQuote(json);
                 modelToStore = new TestFinanceModel(deserializedVehicleData);
+
             } catch (Exception ex)
             {
                 ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
