@@ -15,7 +15,7 @@ namespace MVC_SQL.Controllers
     {
         public IActionResult MyPortfolio()
         {
-            using (TestFinanceModelDbContext con = new TestFinanceModelDbContext())
+            using (FinanceVehiclesDbContext con = new FinanceVehiclesDbContext())
             {
                 //All elements
                 var financeModelList = con.set.Where(f => f.Id >= 0);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models
 {
-    public class TestFinanceModelDbContext : DbContext
+    public class FinanceVehiclesDbContext : DbContext
     {
         public DbSet<TestFinanceModel> TestFinanceModelTable { get; set; }
         public DbSet<DailyFinanceModel> DailyFinanceModelTable { get; set; }

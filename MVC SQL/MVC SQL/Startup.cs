@@ -17,7 +17,7 @@ namespace MVC_SQL
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            TestFinanceModelDbContext con = new TestFinanceModelDbContext();
+            FinanceVehiclesDbContext con = new FinanceVehiclesDbContext();
             con.Database.Initialize(true);
             con.Database.CreateIfNotExists();
 

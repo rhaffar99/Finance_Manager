@@ -26,9 +26,9 @@ namespace MVC_SQL
                     webBuilder.UseStartup<Startup>();
                 });
     }
-    public class TestFinanceModelDbContext : DbContext
+    public class FinanceVehiclesDbContext : DbContext
     {
-        public TestFinanceModelDbContext() : base("FinanceDbContext") { }
+        public FinanceVehiclesDbContext() : base("FinanceDbContext") { }
         public DbSet<TestFinanceModel> set { get; set; }
     }
 }

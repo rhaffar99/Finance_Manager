@@ -10,7 +10,7 @@ namespace MVC_SQL.Logic
     {
         public static void storeData(TestFinanceModel vehicle)
         {
-            using (TestFinanceModelDbContext context = new TestFinanceModelDbContext())
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
                 context.set.Add(vehicle);
                 context.SaveChanges();
@@ -18,7 +18,7 @@ namespace MVC_SQL.Logic
         }
         public static void storeData(List<TestFinanceModel> vehicleList)
         {
-            using (TestFinanceModelDbContext context = new TestFinanceModelDbContext())
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
                 context.set.AddRange(vehicleList);
                 context.SaveChanges();
