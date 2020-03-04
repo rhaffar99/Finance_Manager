@@ -1,6 +1,7 @@
 ﻿using MVC_SQL.Models.API_Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,5 +31,14 @@ namespace MVC_SQL.Models.Entity_Models
         public double adjusted_close { get; set; }
         public double volume { get; set; }
         public double dividend_amount { get; set; }
+    }
+
+    class MonthlyFinanceModelConfiguration: EntityTypeConfiguration<MonthlyFinanceModel>
+    {
+        public MonthlyFinanceModelConfiguration() : base()
+        {
+            HasKey(p => p.Id);
+            ToTable("MonthlyFinanceDb");
+        }
     }
 }

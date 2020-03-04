@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MVC_SQL.Models;
+using MVC_SQL.Models.Entity_Models;
 
 namespace MVC_SQL
 {
@@ -29,6 +30,9 @@ namespace MVC_SQL
     public class FinanceVehiclesDbContext : DbContext
     {
         public FinanceVehiclesDbContext() : base("FinanceDbContext") { }
-        public DbSet<TestFinanceModel> set { get; set; }
+        public DbSet<TestFinanceModel> FinanceModelSet { get; set; }
+        public DbSet<DailyFinanceModel> DailyFinanceModelSet { get; set; }
+        public DbSet<WeeklyFinanceModel> WeeklyFinanceModelSet { get; set; }
+        public DbSet<MonthlyFinanceModel> MonthlyFinanceModelSet { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace MVC_SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class new_contexts : IMigrationMetadata
+    public sealed partial class scratch_base : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(new_contexts));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(scratch_base));
         
         string IMigrationMetadata.Id
         {
-            get { return "202002271757592_new_contexts"; }
+            get { return "202003041722385_scratch_base"; }
         }
         
         string IMigrationMetadata.Source

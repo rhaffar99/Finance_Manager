@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class test : DbMigration
+    public partial class scratch_base : DbMigration
     {
         public override void Up()
         {
@@ -12,10 +12,9 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FinanceVehicle = c.String(),
                         MarketTicker = c.String(),
-                        CurrentValue = c.Int(nullable: false),
-                        PreviousMonthValue = c.Int(nullable: false),
+                        CurrentValue = c.Double(nullable: false),
+                        PercentageChange = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

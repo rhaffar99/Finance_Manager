@@ -12,7 +12,7 @@ namespace MVC_SQL.Logic
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.set.Add(vehicle);
+                context.FinanceModelSet.Add(vehicle);
                 context.SaveChanges();
             }
         }
@@ -20,7 +20,7 @@ namespace MVC_SQL.Logic
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.set.AddRange(vehicleList);
+                context.FinanceModelSet.AddRange(vehicleList);
                 context.SaveChanges();
             }
         }
