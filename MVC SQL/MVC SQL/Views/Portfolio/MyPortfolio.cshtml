@@ -9,31 +9,34 @@
 <div>
     @foreach (var curVehicle in Model)
     {
-        <table>
-            <tr>
-                <td>
-                    MarketTicker
-                </td>
-                <td>
-                    @curVehicle.MarketTicker
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    CurrentValue
-                </td>
-                <td>
-                    @curVehicle.CurrentValue.ToString()
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    PercentageChange
-                </td>
-                <td>
-                    @curVehicle.PercentageChange.ToString()
-                </td>
-            </tr>
-        </table>
+    <table>
+        <tr>
+            <td>
+                MarketTicker
+            </td>
+            <td>
+                <a href="@Url.Action("Vehicle", "Details", 5)" class="elements"><span>@curVehicle.MarketTicker</span></a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CurrentValue
+            </td>
+            <td>
+                @curVehicle.CurrentValue.ToString()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PercentageChange
+            </td>
+            <td>
+                @curVehicle.PercentageChange.ToString()
+            </td>
+        </tr>
+        <tr>
+            <!-->Blank Row<-->
+        </tr>
+    </table>
     }
 </div>
