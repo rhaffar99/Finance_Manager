@@ -8,9 +8,9 @@ namespace MVC_SQL.Logic
 {
     public static class DataSeeder
     {
-        public static void seedInitial(TestFinanceModelDbContext context)
+        public static void seedInitial(FinanceVehiclesDbContext context)
         {
-            if (!context.set.Any())
+            if (!context.FinanceModelSet.Any())
             {
                 var investments = new List<TestFinanceModel>
                 {
@@ -21,7 +21,7 @@ namespace MVC_SQL.Logic
                     new TestFinanceModel ("VGH", 0, "0")
                 };
 
-                context.set.AddRange(investments);
+                context.FinanceModelSet.AddRange(investments);
                 context.SaveChanges();
             }
         }
