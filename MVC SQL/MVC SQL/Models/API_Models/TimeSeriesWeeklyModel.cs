@@ -9,7 +9,7 @@ namespace MVC_SQL.Models.API_Models
     public class TimeSeriesWeeklyModel
     {
         [JsonProperty("Weekly Adjusted Time Series")]
-        public Dictionary<DateTime, WeeklyQuoteModel> WeeklyQuotes { get; set; }
+        public Dictionary<DateTime, WeeklyQuoteModel> weeklyQuotes { get; set; }
 
     }
 

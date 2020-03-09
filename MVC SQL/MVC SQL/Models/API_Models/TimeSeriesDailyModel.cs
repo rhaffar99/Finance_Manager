@@ -9,7 +9,7 @@ namespace MVC_SQL.Models.API_Models
     public class TimeSeriesDailyModel
     {
         [JsonProperty("Time Series (Daily)")]
-        public Dictionary<DateTime, DailyQuoteModel> DailyQuotes {get; set;}
+        public Dictionary<DateTime, DailyQuoteModel> dailyQuotes {get; set;}
     }
 
     public class DailyQuoteModel

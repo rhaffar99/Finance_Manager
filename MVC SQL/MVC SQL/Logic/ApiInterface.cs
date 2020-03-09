@@ -1,4 +1,5 @@
-﻿using MVC_SQL.Models.API_Models;
+﻿using MVC_SQL.Models;
+using MVC_SQL.Models.API_Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -34,28 +35,56 @@ namespace MVC_SQL.Logic
             return responseString;
         }
 
-        static public QuoteEndpointModel jsonToAPIModelQuote (string json)
+        static public object jsonToAPIModel(string model, string json)
         {
-            GlobalQuoteModel jsonModel = JsonConvert.DeserializeObject<GlobalQuoteModel>(json);
-            return jsonModel.quote;
+            switch (model)
+            {
+                case "quote":
+                    return JsonConvert.DeserializeObject<GlobalQuoteModel>(json).quote;
+                case "daily":
+                    return JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json).dailyQuotes;
+                case "weekly":
+                    return JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json).weeklyQuotes;
+                case "monthly":
+                    return JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json).monthlyQuotes;
+                default:
+                    throw new InvalidOperationException();
+            }
         }
 
-        static public TimeSeriesDailyModel jsonToAPIModelDaily(string json)
+        /*static public void JsonToApiModel (string model, string json)
         {
-            TimeSeriesDailyModel jsonModel = JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json);
-            return jsonModel;
+            var deserializedVehicleData = ApiInterface.jsonToAPIModel(model, json);
+            try
+            {
+                var deserializedVehicleData = ApiInterface.jsonToAPIModel(model, json);
+                modelToStore = new TestFinanceModel(deserializedVehicleData);
+            }
+            catch (Exception ex)
+            {
+                ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
+                return View("Error", Error);
+            }
+            EntityDataHandler.storeData(modelToStore);
+        }*/
+
+        static private Dictionary<string, string> JsonFullPop(string companyTickerTag)
+        {
+            Dictionary<string, string> jsonDict = new Dictionary<string, string>();
+            jsonDict.Add("quote", ApiInterface.generateJsonAsync(companyTickerTag, "GLOBAL_QUOTE").Result);
+            jsonDict.Add("daily", ApiInterface.generateJsonAsync(companyTickerTag, "TIME_SERIES_DAILY_ADJUSTED").Result);
+            jsonDict.Add("weekly", ApiInterface.generateJsonAsync(companyTickerTag, "TIME_SERIES_WEEKLY_ADJUSTED").Result);
+            jsonDict.Add("monthly", ApiInterface.generateJsonAsync(companyTickerTag, "TIME_SERIES_MONTHLY_ADJUSTED").Result);
+            return jsonDict;
         }
 
-        static public TimeSeriesWeeklyModel jsonToAPIModelWeekly(string json)
+        static public void vehicleFullPop(Dictionary<string, string> jsonDict)
         {
-            TimeSeriesWeeklyModel jsonModel = JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json);
-            return jsonModel;
-        }
+            foreach (KeyValuePair<string,string> modelKeyPair in jsonDict)
+            {
+                jsonToAPIModel(modelKeyPair.Key, modelKeyPair.Value);
+            }
 
-        static public TimeSeriesMonthlyModel jsonToAPIModelMonthly(string json)
-        {
-            TimeSeriesMonthlyModel jsonModel = JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json);
-            return jsonModel;
         }
     }
 }

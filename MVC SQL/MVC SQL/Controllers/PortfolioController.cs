@@ -41,7 +41,7 @@ namespace MVC_SQL.Controllers
             TestFinanceModel modelToStore = null;
             try
             {
-                deserializedVehicleData = ApiInterface.jsonToAPIModelQuote(json);
+                deserializedVehicleData = (QuoteEndpointModel) ApiInterface.jsonToAPIModel("quote", json);
                 modelToStore = new TestFinanceModel(deserializedVehicleData);
 
             } catch (Exception ex)
@@ -49,7 +49,7 @@ namespace MVC_SQL.Controllers
                 ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
                 return View("Error", Error);
             }
-                EntityDataHandler.storeData(modelToStore);
+            EntityDataHandler.storeData(modelToStore);
             return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
