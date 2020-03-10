@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.Entity_Models
 {
-    public class MonthlyFinanceModel
+    public class MonthlyFinanceModel : IEntityModel
     {
         private MonthlyFinanceModel()
         {

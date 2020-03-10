@@ -1,5 +1,6 @@
 ﻿using MVC_SQL.Models;
 using MVC_SQL.Models.API_Models;
+using MVC_SQL.Models.Entity_Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -82,7 +83,26 @@ namespace MVC_SQL.Logic
         {
             foreach (KeyValuePair<string,string> modelKeyPair in jsonDict)
             {
-                jsonToAPIModel(modelKeyPair.Key, modelKeyPair.Value);
+                var deserializedData = jsonToAPIModel(modelKeyPair.Key, modelKeyPair.Value);
+                IEntityModel modelToStore;
+                switch (modelKeyPair.Key)
+                {
+                    case "quote":
+                        modelToStore = new TestFinanceModel((QuoteEndpointModel)deserializedData);
+                        break;
+                    case "daily":
+                        modelToStore = new DailyFinanceModel((DailyQuoteModel)deserializedData);
+                        break;
+                    case "weekly":
+                        modelToStore = new WeeklyFinanceModel((WeeklyQuoteModel)deserializedData);
+                        break;
+                    case "monthly":
+                        modelToStore = new MonthlyFinanceModel((MonthlyQuoteModel)deserializedData);
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+                EntityDataHandler.storeData(modelToStore);
             }
 
         }

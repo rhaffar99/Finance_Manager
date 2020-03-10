@@ -1,9 +1,10 @@
 ﻿using MVC_SQL.Models.API_Models;
+using MVC_SQL.Models.Entity_Models;
 using System;
 
 namespace MVC_SQL.Models
 {
-    public class TestFinanceModel
+    public class TestFinanceModel : IEntityModel
     {
         private TestFinanceModel()
         {
