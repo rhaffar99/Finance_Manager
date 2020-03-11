@@ -6,6 +6,19 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.Entity_Models
 {
+    public class DailyFinanceModelList
+    {
+        public DailyFinanceModelList(TimeSeriesDailyModel modelList)
+        {
+            dailyFinanceModelList.Clear();
+            foreach (KeyValuePair<DateTime, DailyQuoteModel> dailyTimeQuote in modelList.dailyQuotes)
+            {
+                dailyFinanceModelList.Add(new DailyFinanceModel(dailyTimeQuote.Value));
+            }
+        }
+        public List<DailyFinanceModel> dailyFinanceModelList { get; set; }
+    }
+
     public class DailyFinanceModel
     {
         private DailyFinanceModel()

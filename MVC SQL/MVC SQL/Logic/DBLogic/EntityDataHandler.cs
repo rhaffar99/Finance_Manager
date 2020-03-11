@@ -9,6 +9,7 @@ namespace MVC_SQL.Logic
 {
     public static class EntityDataHandler
     {
+        //Store basic quote data
         public static void storeData(TestFinanceModel vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
@@ -17,38 +18,38 @@ namespace MVC_SQL.Logic
                 context.SaveChanges();
             }
         }
-        public static void storeData(DailyFinanceModel vehicle)
+
+        //Store list of daily quotes
+        public static void storeData(DailyFinanceModelList vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.DailyFinanceModelSet.Add(vehicle);
+                context.DailyFinanceModelSet.AddRange(vehicle.dailyFinanceModelList);
                 context.SaveChanges();
             }
         }
-        public static void storeData(TestFinanceModel vehicle)
+
+        //Store list of weekly quotes
+        public static void storeData(WeeklyFinanceModelList vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.FinanceModelSet.Add(vehicle);
+                context.WeeklyFinanceModelSet.AddRange(vehicle.weeklyFinanceModelList);
                 context.SaveChanges();
             }
         }
-        public static void storeData(TestFinanceModel vehicle)
+
+        //Store list of monthly quotes
+        public static void storeData(MonthlyFinanceModelList vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.FinanceModelSet.Add(vehicle);
+                context.MonthlyFinanceModelSet.AddRange(vehicle.monthlyFinanceModelList);
                 context.SaveChanges();
             }
         }
-        public static void storeData(TestFinanceModel vehicle)
-        {
-            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
-            {
-                context.FinanceModelSet.Add(vehicle);
-                context.SaveChanges();
-            }
-        }
+
+        //Store list of basic quotes
         public static void storeData(List<TestFinanceModel> vehicleList)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
@@ -58,6 +59,7 @@ namespace MVC_SQL.Logic
             }
         }
 
+        //Pull list of basic quotes
         public static List<TestFinanceModel> pullData(IEnumerable<TestFinanceModel> query)
         {
             List<TestFinanceModel> vehicleList = new List<TestFinanceModel>();
