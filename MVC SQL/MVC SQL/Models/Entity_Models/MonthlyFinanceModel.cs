@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.Entity_Models
 {
-    public class MonthlyFinanceModel : IEntityModel
+    public class MonthlyFinanceModel
     {
         private MonthlyFinanceModel()
         {
@@ -31,14 +31,5 @@ namespace MVC_SQL.Models.Entity_Models
         public double adjusted_close { get; set; }
         public double volume { get; set; }
         public double dividend_amount { get; set; }
-    }
-
-    class MonthlyFinanceModelConfiguration: EntityTypeConfiguration<MonthlyFinanceModel>
-    {
-        public MonthlyFinanceModelConfiguration() : base()
-        {
-            HasKey(p => p.Id);
-            ToTable("MonthlyFinanceDb");
-        }
     }
 }

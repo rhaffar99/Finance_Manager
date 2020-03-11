@@ -1,4 +1,5 @@
 ﻿using MVC_SQL.Models;
+using MVC_SQL.Models.Entity_Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,38 @@ namespace MVC_SQL.Logic
 {
     public static class EntityDataHandler
     {
+        public static void storeData(TestFinanceModel vehicle)
+        {
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
+            {
+                context.FinanceModelSet.Add(vehicle);
+                context.SaveChanges();
+            }
+        }
+        public static void storeData(DailyFinanceModel vehicle)
+        {
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
+            {
+                context.DailyFinanceModelSet.Add(vehicle);
+                context.SaveChanges();
+            }
+        }
+        public static void storeData(TestFinanceModel vehicle)
+        {
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
+            {
+                context.FinanceModelSet.Add(vehicle);
+                context.SaveChanges();
+            }
+        }
+        public static void storeData(TestFinanceModel vehicle)
+        {
+            using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
+            {
+                context.FinanceModelSet.Add(vehicle);
+                context.SaveChanges();
+            }
+        }
         public static void storeData(TestFinanceModel vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())

@@ -4,7 +4,7 @@ using System;
 
 namespace MVC_SQL.Models
 {
-    public class TestFinanceModel : IEntityModel
+    public class TestFinanceModel
     {
         private TestFinanceModel()
         {

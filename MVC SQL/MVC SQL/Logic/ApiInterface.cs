@@ -84,7 +84,7 @@ namespace MVC_SQL.Logic
             foreach (KeyValuePair<string,string> modelKeyPair in jsonDict)
             {
                 var deserializedData = jsonToAPIModel(modelKeyPair.Key, modelKeyPair.Value);
-                IEntityModel modelToStore;
+                dynamic modelToStore;
                 switch (modelKeyPair.Key)
                 {
                     case "quote":
