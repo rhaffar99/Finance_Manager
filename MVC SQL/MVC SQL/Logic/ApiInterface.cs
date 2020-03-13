@@ -43,33 +43,17 @@ namespace MVC_SQL.Logic
                 case "quote":
                     return JsonConvert.DeserializeObject<GlobalQuoteModel>(json).quote;
                 case "daily":
-                    return JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json).dailyQuotes;
+                    return JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json).dailyQuotes.Values;
                 case "weekly":
-                    return JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json).weeklyQuotes;
+                    return JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json).weeklyQuotes.Values;
                 case "monthly":
-                    return JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json).monthlyQuotes;
+                    return JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json).monthlyQuotes.Values;
                 default:
                     throw new InvalidOperationException();
             }
         }
 
-        /*static public void JsonToApiModel (string model, string json)
-        {
-            var deserializedVehicleData = ApiInterface.jsonToAPIModel(model, json);
-            try
-            {
-                var deserializedVehicleData = ApiInterface.jsonToAPIModel(model, json);
-                modelToStore = new TestFinanceModel(deserializedVehicleData);
-            }
-            catch (Exception ex)
-            {
-                ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
-                return View("Error", Error);
-            }
-            EntityDataHandler.storeData(modelToStore);
-        }*/
-
-        static private Dictionary<string, string> JsonFullPop(string companyTickerTag)
+        static public Dictionary<string, string> JsonFullPop(string companyTickerTag)
         {
             Dictionary<string, string> jsonDict = new Dictionary<string, string>();
             jsonDict.Add("quote", ApiInterface.generateJsonAsync(companyTickerTag, "GLOBAL_QUOTE").Result);

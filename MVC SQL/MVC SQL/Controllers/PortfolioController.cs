@@ -37,19 +37,19 @@ namespace MVC_SQL.Controllers
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
             var deserializedVehicleData = new QuoteEndpointModel();
-            var json = ApiInterface.generateJsonAsync(getVehicle.CompanyTickerTag, "GLOBAL_QUOTE").Result;
-            TestFinanceModel modelToStore = null;
+            var jsonDict = ApiInterface.JsonFullPop(getVehicle.CompanyTickerTag);
+            
+            //Consider that error catching done in this method is wrong. If any of the quote types
+            //Returns an error, it may be blocked, but the other quote types won't be blocked.
             try
             {
-                deserializedVehicleData = (QuoteEndpointModel) ApiInterface.jsonToAPIModel("quote", json);
-                modelToStore = new TestFinanceModel(deserializedVehicleData);
+                ApiInterface.vehicleFullPop(jsonDict);
 
             } catch (Exception ex)
             {
                 ErrorModel Error = new ErrorModel(ex.Message, ex.StackTrace);
                 return View("Error", Error);
             }
-            EntityDataHandler.storeData(modelToStore);
             return View(deserializedVehicleData);
         }
         public IActionResult FinanceAnalytics()
