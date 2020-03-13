@@ -43,11 +43,11 @@ namespace MVC_SQL.Logic
                 case "quote":
                     return JsonConvert.DeserializeObject<GlobalQuoteModel>(json).quote;
                 case "daily":
-                    return JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json).dailyQuotes.Values;
+                    return JsonConvert.DeserializeObject<TimeSeriesDailyModel>(json);
                 case "weekly":
-                    return JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json).weeklyQuotes.Values;
+                    return JsonConvert.DeserializeObject<TimeSeriesWeeklyModel>(json);
                 case "monthly":
-                    return JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json).monthlyQuotes.Values;
+                    return JsonConvert.DeserializeObject<TimeSeriesMonthlyModel>(json);
                 default:
                     throw new InvalidOperationException();
             }
@@ -63,8 +63,9 @@ namespace MVC_SQL.Logic
             return jsonDict;
         }
 
-        static public void vehicleFullPop(Dictionary<string, string> jsonDict)
+        static public QuoteEndpointModel vehicleFullPop(Dictionary<string, string> jsonDict)
         {
+            QuoteEndpointModel modelToReturn = null;
             foreach (KeyValuePair<string,string> modelKeyPair in jsonDict)
             {
                 var deserializedData = jsonToAPIModel(modelKeyPair.Key, modelKeyPair.Value);
@@ -72,23 +73,24 @@ namespace MVC_SQL.Logic
                 switch (modelKeyPair.Key)
                 {
                     case "quote":
+                        modelToReturn = (QuoteEndpointModel)deserializedData;
                         modelToStore = new TestFinanceModel((QuoteEndpointModel)deserializedData);
                         break;
                     case "daily":
-                        modelToStore = new DailyFinanceModel((DailyQuoteModel)deserializedData);
+                        modelToStore = new DailyFinanceModelList((TimeSeriesDailyModel) deserializedData);
                         break;
                     case "weekly":
-                        modelToStore = new WeeklyFinanceModel((WeeklyQuoteModel)deserializedData);
+                        modelToStore = new WeeklyFinanceModelList((TimeSeriesWeeklyModel) deserializedData);
                         break;
                     case "monthly":
-                        modelToStore = new MonthlyFinanceModel((MonthlyQuoteModel)deserializedData);
+                        modelToStore = new MonthlyFinanceModelList((TimeSeriesMonthlyModel) deserializedData);
                         break;
                     default:
                         throw new InvalidOperationException();
                 }
                 EntityDataHandler.storeData(modelToStore);
             }
-
+            return modelToReturn;
         }
     }
 }

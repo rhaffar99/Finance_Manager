@@ -30,7 +30,7 @@ namespace MVC_SQL.Models.API_Models
         public double adjusted_close { get; set; }
 
         [JsonProperty("6. volume")]
-        public int volume { get; set; }
+        public string volume { get; set; }
 
         [JsonProperty("7. dividend amount")]
         public double dividend_amount { get; set; }

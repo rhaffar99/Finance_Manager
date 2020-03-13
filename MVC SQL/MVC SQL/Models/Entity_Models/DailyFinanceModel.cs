@@ -10,7 +10,7 @@ namespace MVC_SQL.Models.Entity_Models
     {
         public DailyFinanceModelList(TimeSeriesDailyModel modelList)
         {
-            dailyFinanceModelList.Clear();
+            dailyFinanceModelList = new List<DailyFinanceModel>();
             foreach (KeyValuePair<DateTime, DailyQuoteModel> dailyTimeQuote in modelList.dailyQuotes)
             {
                 dailyFinanceModelList.Add(new DailyFinanceModel(dailyTimeQuote.Value));
@@ -43,7 +43,7 @@ namespace MVC_SQL.Models.Entity_Models
         public double low { get; set; }
         public double close { get; set; }
         public double adjusted_close { get; set; }
-        public double volume { get; set; }
+        public string volume { get; set; }
         public double dividend_amount { get; set; }
         public double split_coefficient { get; set; }
     }

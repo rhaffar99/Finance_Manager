@@ -36,14 +36,14 @@ namespace MVC_SQL.Controllers
         //Redirects to form that populates Model Binder
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
-            var deserializedVehicleData = new QuoteEndpointModel();
+            QuoteEndpointModel deserializedVehicleData = null;
             var jsonDict = ApiInterface.JsonFullPop(getVehicle.CompanyTickerTag);
-            
+
             //Consider that error catching done in this method is wrong. If any of the quote types
             //Returns an error, it may be blocked, but the other quote types won't be blocked.
             try
             {
-                ApiInterface.vehicleFullPop(jsonDict);
+                deserializedVehicleData = ApiInterface.vehicleFullPop(jsonDict);
 
             } catch (Exception ex)
             {

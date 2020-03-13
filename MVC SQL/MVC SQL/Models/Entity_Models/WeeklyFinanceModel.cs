@@ -10,7 +10,7 @@ namespace MVC_SQL.Models.Entity_Models
     {
         public WeeklyFinanceModelList(TimeSeriesWeeklyModel modelList)
         {
-            weeklyFinanceModelList.Clear();
+            weeklyFinanceModelList = new List<WeeklyFinanceModel>();
             foreach (KeyValuePair<DateTime, WeeklyQuoteModel> WeeklyTimeQuote in modelList.weeklyQuotes)
             {
                 weeklyFinanceModelList.Add(new WeeklyFinanceModel(WeeklyTimeQuote.Value));
@@ -42,7 +42,7 @@ namespace MVC_SQL.Models.Entity_Models
         public double low { get; set; }
         public double close { get; set; }
         public double adjusted_close { get; set; }
-        public double volume { get; set; }
+        public string volume { get; set; }
         public double dividend_amount { get; set; }
     }
 }

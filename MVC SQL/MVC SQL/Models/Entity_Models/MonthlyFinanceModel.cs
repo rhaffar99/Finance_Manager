@@ -11,7 +11,7 @@ namespace MVC_SQL.Models.Entity_Models
     {
         public MonthlyFinanceModelList(TimeSeriesMonthlyModel modelList)
         {
-            monthlyFinanceModelList.Clear();
+            monthlyFinanceModelList = new List<MonthlyFinanceModel>();
             foreach (KeyValuePair<DateTime, MonthlyQuoteModel> MonthlyTimeQuote in modelList.monthlyQuotes)
             {
                 monthlyFinanceModelList.Add(new MonthlyFinanceModel(MonthlyTimeQuote.Value));
@@ -42,7 +42,7 @@ namespace MVC_SQL.Models.Entity_Models
         public double low { get; set; }
         public double close { get; set; }
         public double adjusted_close { get; set; }
-        public double volume { get; set; }
+        public string volume { get; set; }
         public double dividend_amount { get; set; }
     }
 }
