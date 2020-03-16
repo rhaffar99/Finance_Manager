@@ -8,6 +8,9 @@ namespace MVC_SQL.Models.API_Models
 {
     public class TimeSeriesDailyModel
     {
+        [JsonProperty("Meta Data")]
+        public MetaDataModel metaData { get; set; }
+
         [JsonProperty("Time Series (Daily)")]
         public Dictionary<DateTime, DailyQuoteModel> dailyQuotes {get; set;}
     }

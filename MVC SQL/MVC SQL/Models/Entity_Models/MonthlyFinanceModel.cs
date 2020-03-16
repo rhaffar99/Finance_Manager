@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.Entity_Models
 {
-    public class MonthlyFinanceModelList
+    public class MonthlyFinanceTimeSeriesParentModel
     {
-        public MonthlyFinanceModelList(TimeSeriesMonthlyModel modelList)
+        public MonthlyFinanceTimeSeriesParentModel(TimeSeriesMonthlyModel TimeSeriesParentModel)
         {
-            monthlyFinanceModelList = new List<MonthlyFinanceModel>();
-            foreach (KeyValuePair<DateTime, MonthlyQuoteModel> MonthlyTimeQuote in modelList.monthlyQuotes)
+            monthlyFinanceTimeSeriesParentModel = new List<MonthlyFinanceModel>();
+            foreach (KeyValuePair<DateTime, MonthlyQuoteModel> MonthlyTimeQuote in TimeSeriesParentModel.monthlyQuotes)
             {
-                monthlyFinanceModelList.Add(new MonthlyFinanceModel(MonthlyTimeQuote.Value));
+                monthlyFinanceTimeSeriesParentModel.Add(new MonthlyFinanceModel(MonthlyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol));
             }
         }
-        public List<MonthlyFinanceModel> monthlyFinanceModelList { get; set; }
+        public List<MonthlyFinanceModel> monthlyFinanceTimeSeriesParentModel { get; set; }
     }
 
     public class MonthlyFinanceModel
@@ -26,7 +26,7 @@ namespace MVC_SQL.Models.Entity_Models
         {
 
         }
-        public MonthlyFinanceModel(MonthlyQuoteModel model)
+        public MonthlyFinanceModel(MonthlyQuoteModel model, string marketTicker)
         {
             this.open = model.open;
             this.high = model.high;
@@ -35,6 +35,7 @@ namespace MVC_SQL.Models.Entity_Models
             this.adjusted_close = model.adjusted_close;
             this.volume = model.volume;
             this.dividend_amount = model.dividend_amount;
+            this.market_ticker = marketTicker;
         }
         public int Id { get; set; }
         public double open { get; set; }
@@ -44,5 +45,6 @@ namespace MVC_SQL.Models.Entity_Models
         public double adjusted_close { get; set; }
         public string volume { get; set; }
         public double dividend_amount { get; set; }
+        public string market_ticker { get; set; }
     }
 }

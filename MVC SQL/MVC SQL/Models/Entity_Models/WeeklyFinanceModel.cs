@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace MVC_SQL.Models.Entity_Models
 {
-    public class WeeklyFinanceModelList
+    public class WeeklyFinanceTimeSeriesParentModel
     {
-        public WeeklyFinanceModelList(TimeSeriesWeeklyModel modelList)
+        public WeeklyFinanceTimeSeriesParentModel(TimeSeriesWeeklyModel TimeSeriesParentModel)
         {
-            weeklyFinanceModelList = new List<WeeklyFinanceModel>();
-            foreach (KeyValuePair<DateTime, WeeklyQuoteModel> WeeklyTimeQuote in modelList.weeklyQuotes)
+            weeklyFinanceTimeSeriesParentModel = new List<WeeklyFinanceModel>();
+            foreach (KeyValuePair<DateTime, WeeklyQuoteModel> WeeklyTimeQuote in TimeSeriesParentModel.weeklyQuotes)
             {
-                weeklyFinanceModelList.Add(new WeeklyFinanceModel(WeeklyTimeQuote.Value));
+                weeklyFinanceTimeSeriesParentModel.Add(new WeeklyFinanceModel(WeeklyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol));
             }
         }
-        public List<WeeklyFinanceModel> weeklyFinanceModelList { get; set; }
+        public List<WeeklyFinanceModel> weeklyFinanceTimeSeriesParentModel { get; set; }
     }
 
     public class WeeklyFinanceModel
@@ -25,7 +25,7 @@ namespace MVC_SQL.Models.Entity_Models
         {
 
         }
-        public WeeklyFinanceModel(WeeklyQuoteModel model)
+        public WeeklyFinanceModel(WeeklyQuoteModel model, string marketTicker)
         {
             this.open = model.open;
             this.high = model.high;
@@ -34,6 +34,7 @@ namespace MVC_SQL.Models.Entity_Models
             this.adjusted_close = model.adjusted_close;
             this.volume = model.volume;
             this.dividend_amount = model.dividend_amount;
+            this.market_ticker = marketTicker;
         }
 
         public int Id { get; set; }
@@ -44,5 +45,6 @@ namespace MVC_SQL.Models.Entity_Models
         public double adjusted_close { get; set; }
         public string volume { get; set; }
         public double dividend_amount { get; set; }
+        public string market_ticker { get; set; }
     }
 }

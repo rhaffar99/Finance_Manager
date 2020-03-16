@@ -8,9 +8,13 @@ namespace MVC_SQL.Models.API_Models
 {
     public class TimeSeriesMonthlyModel
     {
+        [JsonProperty("Meta Data")]
+        public MetaDataModel metaData { get; set; }
+
         [JsonProperty("Monthly Adjusted Time Series")]
         public Dictionary<DateTime, MonthlyQuoteModel> monthlyQuotes { get; set; }
     }
+
     public class MonthlyQuoteModel
     {
 

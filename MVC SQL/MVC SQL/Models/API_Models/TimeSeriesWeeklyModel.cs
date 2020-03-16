@@ -8,6 +8,9 @@ namespace MVC_SQL.Models.API_Models
 {
     public class TimeSeriesWeeklyModel
     {
+        [JsonProperty("Meta Data")]
+        public MetaDataModel metaData { get; set; }
+
         [JsonProperty("Weekly Adjusted Time Series")]
         public Dictionary<DateTime, WeeklyQuoteModel> weeklyQuotes { get; set; }
 

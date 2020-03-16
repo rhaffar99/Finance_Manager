@@ -20,31 +20,31 @@ namespace MVC_SQL.Logic
         }
 
         //Store list of daily quotes
-        public static void storeData(DailyFinanceModelList vehicle)
+        public static void storeData(DailyFinanceTimeSeriesParentModel vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.DailyFinanceModelSet.AddRange(vehicle.dailyFinanceModelList);
+                context.DailyFinanceModelSet.AddRange(vehicle.dailyFinanceTimeSeriesParentModel);
                 context.SaveChanges();
             }
         }
 
         //Store list of weekly quotes
-        public static void storeData(WeeklyFinanceModelList vehicle)
+        public static void storeData(WeeklyFinanceTimeSeriesParentModel vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.WeeklyFinanceModelSet.AddRange(vehicle.weeklyFinanceModelList);
+                context.WeeklyFinanceModelSet.AddRange(vehicle.weeklyFinanceTimeSeriesParentModel);
                 context.SaveChanges();
             }
         }
 
         //Store list of monthly quotes
-        public static void storeData(MonthlyFinanceModelList vehicle)
+        public static void storeData(MonthlyFinanceTimeSeriesParentModel vehicle)
         {
             using (FinanceVehiclesDbContext context = new FinanceVehiclesDbContext())
             {
-                context.MonthlyFinanceModelSet.AddRange(vehicle.monthlyFinanceModelList);
+                context.MonthlyFinanceModelSet.AddRange(vehicle.monthlyFinanceTimeSeriesParentModel);
                 context.SaveChanges();
             }
         }

@@ -77,13 +77,13 @@ namespace MVC_SQL.Logic
                         modelToStore = new TestFinanceModel((QuoteEndpointModel)deserializedData);
                         break;
                     case "daily":
-                        modelToStore = new DailyFinanceModelList((TimeSeriesDailyModel) deserializedData);
+                        modelToStore = new DailyFinanceTimeSeriesParentModel((TimeSeriesDailyModel) deserializedData);
                         break;
                     case "weekly":
-                        modelToStore = new WeeklyFinanceModelList((TimeSeriesWeeklyModel) deserializedData);
+                        modelToStore = new WeeklyFinanceTimeSeriesParentModel((TimeSeriesWeeklyModel) deserializedData);
                         break;
                     case "monthly":
-                        modelToStore = new MonthlyFinanceModelList((TimeSeriesMonthlyModel) deserializedData);
+                        modelToStore = new MonthlyFinanceTimeSeriesParentModel((TimeSeriesMonthlyModel) deserializedData);
                         break;
                     default:
                         throw new InvalidOperationException();

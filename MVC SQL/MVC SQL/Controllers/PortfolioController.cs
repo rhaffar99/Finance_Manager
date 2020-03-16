@@ -18,8 +18,8 @@ namespace MVC_SQL.Controllers
             using (FinanceVehiclesDbContext con = new FinanceVehiclesDbContext())
             {
                 //All elements
-                var financeModelList = con.FinanceModelSet.Where(f => f.Id >= 0);
-                return View(financeModelList.Select(x => x).ToList());
+                var financeTimeSeriesParentModel = con.FinanceModelSet.Where(f => f.Id >= 0);
+                return View(financeTimeSeriesParentModel.Select(x => x).ToList());
             }
         }
         public IActionResult GetVehicle()
