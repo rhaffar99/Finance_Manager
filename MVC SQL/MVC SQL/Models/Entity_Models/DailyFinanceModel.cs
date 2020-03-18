@@ -11,9 +11,9 @@ namespace MVC_SQL.Models.Entity_Models
         public DailyFinanceTimeSeriesParentModel(TimeSeriesDailyModel TimeSeriesParentModel)
         {
             dailyFinanceTimeSeriesParentModel = new List<DailyFinanceModel>();
-            foreach (KeyValuePair<DateTime, DailyQuoteModel> dailyTimeQuote in TimeSeriesParentModel.dailyQuotes)
+            foreach (KeyValuePair<DateTime, DailyQuoteModel> DailyTimeQuote in TimeSeriesParentModel.dailyQuotes)
             {
-                dailyFinanceTimeSeriesParentModel.Add(new DailyFinanceModel(dailyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol));
+                dailyFinanceTimeSeriesParentModel.Add(new DailyFinanceModel(DailyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol, DailyTimeQuote.Key));
             }
         }
         public List<DailyFinanceModel> dailyFinanceTimeSeriesParentModel { get; set; }
@@ -25,7 +25,7 @@ namespace MVC_SQL.Models.Entity_Models
         {
 
         }
-        public DailyFinanceModel(DailyQuoteModel model, string marketTicker)
+        public DailyFinanceModel(DailyQuoteModel model, string marketTicker, DateTime date)
         {
             this.open = model.open;
             this.high = model.high;
@@ -36,6 +36,7 @@ namespace MVC_SQL.Models.Entity_Models
             this.dividend_amount = model.dividend_amount;
             this.split_coefficient = model.split_coefficient;
             this.market_ticker = marketTicker;
+            this.date = date;
         }
 
         public int Id { get; set; }
@@ -48,5 +49,6 @@ namespace MVC_SQL.Models.Entity_Models
         public double dividend_amount { get; set; }
         public double split_coefficient { get; set; }
         public string market_ticker { get; set; }
+        public DateTime date { get; set; }
     }
 }

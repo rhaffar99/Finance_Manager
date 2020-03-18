@@ -10,8 +10,9 @@ namespace MVC_SQL.Controllers
     public class VehicleController : Controller
     {
         // GET: Vehicle/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string stockTicker)
         {
+
             return View();
         }
 

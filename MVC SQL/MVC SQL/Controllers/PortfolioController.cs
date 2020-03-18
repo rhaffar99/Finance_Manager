@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVC_SQL.Logic;
+using MVC_SQL.Logic.DBLogic;
 using MVC_SQL.Models;
 using MVC_SQL.Models.API_Models;
 
@@ -36,6 +37,10 @@ namespace MVC_SQL.Controllers
         //Redirects to form that populates Model Binder
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
+            if (DbInterfacer.checkIfDuplicate(getVehicle.CompanyTickerTag))
+            {
+                return View("AlreadyExists", getVehicle.CompanyTickerTag);
+            }
             QuoteEndpointModel deserializedVehicleData = null;
             var jsonDict = ApiInterface.JsonFullPop(getVehicle.CompanyTickerTag);
 

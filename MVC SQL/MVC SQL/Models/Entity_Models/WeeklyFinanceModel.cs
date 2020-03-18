@@ -13,7 +13,7 @@ namespace MVC_SQL.Models.Entity_Models
             weeklyFinanceTimeSeriesParentModel = new List<WeeklyFinanceModel>();
             foreach (KeyValuePair<DateTime, WeeklyQuoteModel> WeeklyTimeQuote in TimeSeriesParentModel.weeklyQuotes)
             {
-                weeklyFinanceTimeSeriesParentModel.Add(new WeeklyFinanceModel(WeeklyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol));
+                weeklyFinanceTimeSeriesParentModel.Add(new WeeklyFinanceModel(WeeklyTimeQuote.Value, TimeSeriesParentModel.metaData.symbol, WeeklyTimeQuote.Key));
             }
         }
         public List<WeeklyFinanceModel> weeklyFinanceTimeSeriesParentModel { get; set; }
@@ -25,7 +25,7 @@ namespace MVC_SQL.Models.Entity_Models
         {
 
         }
-        public WeeklyFinanceModel(WeeklyQuoteModel model, string marketTicker)
+        public WeeklyFinanceModel(WeeklyQuoteModel model, string marketTicker, DateTime date)
         {
             this.open = model.open;
             this.high = model.high;
@@ -35,6 +35,7 @@ namespace MVC_SQL.Models.Entity_Models
             this.volume = model.volume;
             this.dividend_amount = model.dividend_amount;
             this.market_ticker = marketTicker;
+            this.date = date;
         }
 
         public int Id { get; set; }
@@ -46,5 +47,6 @@ namespace MVC_SQL.Models.Entity_Models
         public string volume { get; set; }
         public double dividend_amount { get; set; }
         public string market_ticker { get; set; }
+        public DateTime date {get; set;}
     }
 }
