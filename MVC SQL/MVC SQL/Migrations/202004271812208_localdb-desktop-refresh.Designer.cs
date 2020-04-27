@@ -7,13 +7,13 @@ namespace MVC_SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class scratch_base : IMigrationMetadata
+    public sealed partial class localdbdesktoprefresh : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(scratch_base));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(localdbdesktoprefresh));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003041722385_scratch_base"; }
+            get { return "202004271812208_localdb-desktop-refresh"; }
         }
         
         string IMigrationMetadata.Source
