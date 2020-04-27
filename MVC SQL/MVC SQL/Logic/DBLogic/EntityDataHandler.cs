@@ -60,14 +60,17 @@ namespace MVC_SQL.Logic
         }
 
         //Pull list of basic quotes
-        public static List<TestFinanceModel> pullData(IEnumerable<TestFinanceModel> query)
+        public static void pullData(List<DailyFinanceModel> daily_list)
         {
-            List<TestFinanceModel> vehicleList = new List<TestFinanceModel>();
-            foreach (TestFinanceModel vehicle in query)
-            {
-                vehicleList.Add(vehicle);
-            }
-            return vehicleList;
+
+        }
+        public static void pullData(List<WeeklyFinanceModel> daily_list)
+        {
+
+        }
+        public static void pullData(List<MonthlyFinanceModel> daily_list)
+        {
+
         }
     }
 }
