@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MVC_SQL.Models.VehicleViewModels;
 
 namespace MVC_SQL.Controllers
 {
@@ -12,7 +13,7 @@ namespace MVC_SQL.Controllers
         // GET: Vehicle/Details/5
         public ActionResult Details(string stockTicker)
         {
-
+            var lstModel = new List<SimpleReportViewModel>();
             return View();
         }
 

@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MVC_SQL.Logic;
-using MVC_SQL.Logic.DBLogic;
 using MVC_SQL.Models;
-using MVC_SQL.Models.API_Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -37,11 +35,11 @@ namespace MVC_SQL.Controllers
         //Redirects to form that populates Model Binder
         public IActionResult AddVehicle(GetVehicleModelBinder getVehicle)
         {
-            if (DbInterfacer.checkIfDuplicate(getVehicle.CompanyTickerTag))
+            if (Logic.DBLogic.DbInterfacer.checkIfDuplicate(getVehicle.CompanyTickerTag))
             {
                 return View("AlreadyExists", getVehicle.CompanyTickerTag);
             }
-            QuoteEndpointModel deserializedVehicleData = null;
+            Models.API_Models.QuoteEndpointModel deserializedVehicleData = null;
             var jsonDict = ApiInterface.JsonFullPop(getVehicle.CompanyTickerTag);
 
             //Consider that error catching done in this method is wrong. If any of the quote types
